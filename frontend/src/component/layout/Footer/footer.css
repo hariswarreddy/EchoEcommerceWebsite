@@ -1,0 +1,116 @@
+
+
+#footer {
+    margin-top: 10vmax;
+    padding: 2vmax;
+    background-color: rgb(34, 33, 33);
+    color: white;
+    display: flex;
+    align-items: center;
+    /* width: 100%; */
+  }
+  
+  .leftFooter {
+    width: 20%;
+    display: flex;
+
+    margin-left: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .leftFooter > h4 {
+    font-family: "Roboto";
+    font-size: 1vmax;
+  }
+  .leftFooter > p {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 1.2vmax;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  .store{
+    width: 16vmax;
+    margin: 1vmax;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid rgb(194, 82, 82);
+    padding: 1.3vmax;
+  }
+  .store>p{
+    margin-left: 10px;
+  }
+  
+  .midFooter {
+    width: 60%;
+  
+    text-align: center;
+  }
+  
+  .midFooter > h1 {
+    font-size: 4vmax;
+    font-family: "Roboto";
+    color: #eb4034;
+  }
+  .midFooter > p {
+    max-width: 60%;
+    font-size: 1.5vmax;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 1vmax auto;
+  }
+  
+  .rightFooter {
+    width: 20%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rightFooter > h4 {
+    font-family: "Roboto";
+    font-size: 2vmax;
+    text-decoration: underline;
+  }
+  
+  .rightFooter > a {
+    text-decoration: none;
+    font-size: 1.8vmax;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: white;
+    transition: all 0.5s;
+    margin-top: 1.2vmax;
+    box-sizing: border-box;
+  }
+ 
+  .rightFooter > a:hover {
+    color: #eb4034;
+  }
+
+  @media screen and (max-width:450px){
+    #footer{
+      flex-direction: column;
+    }
+     .leftFooter{
+      width: 100%;
+      margin-right:20px;
+    }
+    .store{
+      width: auto;
+    }
+    .midFooter{
+      width: 130%;
+    }
+    .rightFooter{
+      margin-top: 10px;
+      /* flex-direction: row; */
+      justify-content: center;
+      width: 100%;
+    }
+    .rightFooter>h4,.rightFooter>a{
+      font: 600 2.5vmax "Roboto";
+    }
+  }

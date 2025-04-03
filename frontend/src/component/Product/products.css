@@ -1,0 +1,119 @@
+.productsHeading{
+    font: 600 2vmax "Roboto";
+    width: 30vw;
+    margin: 3vmax auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.493);
+    text-align: center;
+    padding: 2vmax;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    margin:  2vmax;
+    padding: 0 5vmax;
+    justify-content: center;
+    align-items: center;
+    min-height:40vh;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: gray;
+  border-radius: 30px;
+  width: 30vw;
+  margin: auto;
+  transition: all 0.2s;
+}
+
+.page-item {
+  margin: 0 5px;
+  color: white; /* Should show hand on hover */
+}
+
+.page-link {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  /* cursor: pointer; */
+}
+
+/* .page-item.disabled .page-link {
+  pointer-events: none;
+  cursor: default;
+} */
+
+.active{
+  transform: scale(1.3);
+  color: tomato;
+}
+  
+/* @media screen and (max-width:1024px){
+  
+  .pagination{
+    width: 42vw;
+  }
+}
+@media screen and (max-width:600px){
+  .pagination{
+    width: 60vw;
+  }
+} */
+@media screen and (max-width:1024px) {
+  .productsHeading{
+    margin-top: 80px;
+  }
+  .pagination{
+    width: 85vw;
+  }
+}
+
+
+/* Price Bar  */
+.filterBox{
+  position: absolute;
+  top: 10vmax;
+  left: 1vmax;
+  width: 10vmax;
+
+}
+.filterBox>p{
+  text-align: center;
+  font: 600 1.2vmax "Roboto";
+  margin-bottom: 10px;
+}
+.filterBox>fieldset{
+  border: 1px solid rgba(0, 0, 0, 0.381);
+}
+
+@media screen and (max-width:1024px){
+  .filterBox{
+    position: static;
+    width: 20vmax;
+    margin: 20px auto;
+  }
+}
+
+/* categories */
+.categoryBox{
+  list-style: none;
+  cursor: pointer;
+}
+.category-link{
+  color: rgba(0, 0, 0, 0.82);
+  font: 400 1vmax "Roboto";
+}
+.category-link:hover{
+  color: tomato;
+}
+
+/* .productCount{
+  display: flex;
+  justify-content: flex-end;
+  margin: 2vmax;
+  font: 300 2vmax "Roboto"
+} */
