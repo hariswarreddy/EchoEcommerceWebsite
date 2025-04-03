@@ -2,12 +2,6 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import connectDatabase from "./config/database.js";
 import { v2 as cloudinary } from "cloudinary";
-import cors from "cors";
-
-app.use(cors({
-  origin: "https://echoecommercestore.onrender.com",
-  credentials: true
-}));
 
 // Uncaught Error Handling
 process.on("uncaughtRejection", (err) => {

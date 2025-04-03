@@ -13,11 +13,18 @@ import payment from "./routes/paymentRoute.js";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "backend/config/config.env" });
 }
+
+
+app.use(cors({
+  origin: "https://echoecommercestore.onrender.com",
+  credentials: true
+}));
 
 // middlewares
 app.use(express.json({ limit: "100mb" }));
