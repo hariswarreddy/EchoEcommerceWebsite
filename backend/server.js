@@ -14,6 +14,7 @@ process.on("uncaughtRejection", (err) => {
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "backend/config/config.env" });
 }
+dotenv.config();
 
 // Connecting Database
 connectDatabase();
