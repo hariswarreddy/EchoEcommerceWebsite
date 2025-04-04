@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import {toast,Toaster} from "react-hot-toast";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
+import API_URL from "../../config";
 
 const PaymentContent = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -55,7 +56,7 @@ const PaymentContent = () => {
         withCredentials:true
       }
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${API_URL}/api/v1/payment/process`,
         paymentData,
         config
       )
