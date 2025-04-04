@@ -83,10 +83,12 @@
 }
 @media screen and (max-width: 600px) {
     .profileContainer {
-      height: 150vh;
+      height: 100vh;
       flex-direction: column;
     }
-  
+  .profileContainer > div{
+      height: 40vh;
+  }
     .profileContainer > div:first-child > h1 {
       font: 500 3.2vmax "Roboto";
       transform: translateY(-2vmax);
