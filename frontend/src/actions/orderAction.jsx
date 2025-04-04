@@ -35,9 +35,9 @@ const options = {
       const config = {
         headers: {
           "Content-Type": "application/json",
-        },
+        },withCredentials: true
       };
-      const { data } = await axios.post(`${API_URL}/api/v1/order/new`, order, config,options);
+      const { data } = await axios.post(`${API_URL}/api/v1/order/new`, order, config);
   
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     } catch (error) {
@@ -88,12 +88,12 @@ const options = {
       const config = {
         headers: {
           "Content-Type": "application/json",
-        },
+        },withCredentials: true
       };
       const { data } = await axios.put(
         `${API_URL}/api/v1/admin/order/${id}`,
         order,
-        config,options
+        config
       );
   
       dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });

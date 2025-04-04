@@ -77,9 +77,9 @@ export const createProduct = (productData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_PRODUCT_REQUEST });
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },withCredentials: true
     };
-    const { data } = await axios.post(`${API_URL}/api/v1/admin/product/new`, productData, config,options);
+    const { data } = await axios.post(`${API_URL}/api/v1/admin/product/new`, productData, config);
     dispatch({
       type: NEW_PRODUCT_SUCCESS,
       payload: data,
@@ -97,9 +97,9 @@ export const updateProduct = (id,productData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },withCredentials: true
     };
-    const { data } = await axios.put(`${API_URL}/api/v1/admin/product/${id}`, productData, config,options);
+    const { data } = await axios.put(`${API_URL}/api/v1/admin/product/${id}`, productData, config);
     dispatch({
       type: UPDATE_PRODUCT_SUCCESS,
       payload: data.success,
@@ -153,9 +153,9 @@ export const newReview = (reviewData) => async (dispatch) => {
   try {
     dispatch({ type: NEW_REVIEW_REQUEST });
     const config = {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },withCredentials: true
     };
-    const { data } = await axios.put(`${API_URL}/api/v1/review`, reviewData, config,options);
+    const { data } = await axios.put(`${API_URL}/api/v1/review`, reviewData, config);
     dispatch({
       type: NEW_REVIEW_SUCCESS,
       payload: data.success,

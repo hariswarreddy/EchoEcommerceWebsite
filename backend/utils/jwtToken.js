@@ -9,8 +9,8 @@ export const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    secure: true, // ⚠️ Required for HTTPS (onrender.com)
-    sameSite: "None", // ⚠️ Required when frontend & backend are on different domains
+    secure: true,
+    sameSite: "None", 
   };
 
   res.status(statusCode).cookie("token",token,options).json({
