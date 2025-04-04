@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import CheckOutSteps from "../Cart/CheckOutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -9,9 +9,8 @@ import {
   CardExpiryElement,
   useStripe,
   useElements,
+  Elements,
 } from "@stripe/react-stripe-js";
-
-
 import "./payment.css";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import EventIcon from "@mui/icons-material/Event";
@@ -20,8 +19,9 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 import { useNavigate } from "react-router-dom";
 import {toast,Toaster} from "react-hot-toast";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
 
-const Payment = () => {
+const PaymentContent = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,9 +49,10 @@ const Payment = () => {
     payBtn.current.disabled = true;
     try {
       const config = {
-        header: {
-          "Content-Type":"applications/json"
-        }
+        headers: {
+          "Content-Type": "application/json"
+        },
+        withCredentials:true
       }
       const { data } = await axios.post(
         "/api/v1/payment/process",
@@ -142,4 +143,30 @@ const Payment = () => {
   );
 };
 
+
+const Payment = () => {
+  const [stripeApiKey, setStripeApiKey] = useState(null);
+  useEffect(() => {
+    async function getStripeApiKey() {
+      try {
+        const { data } = await axios.get("/api/v1/stripeapikey", {
+          withCredentials: true,
+        });
+        setStripeApiKey(data.stripeApiKey);
+      } catch (error) {
+        console.error("Failed to fetch Stripe API key:", error);
+      }
+    }
+    getStripeApiKey();
+  }, []);
+  if (!stripeApiKey) {
+    return <div>Loading Payment...</div>
+  }
+  return (
+    <Elements stripe={loadStripe(stripeApiKey)}>
+      <PaymentContent />
+    </Elements>
+  )
+  
+}
 export default Payment;

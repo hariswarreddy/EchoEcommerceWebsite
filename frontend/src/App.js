@@ -22,10 +22,7 @@ import ForgotPassword from "./component/User/ForgotPassword.jsx";
 import Cart from "./component/Cart/Cart.jsx";
 import Shipping from "./component/Cart/Shipping.jsx";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.jsx";
-import axios from "axios";
 import Payment from "./component/Cart/Payment.jsx";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess.jsx";
 import MyOrders from "./component/Order/MyOrders.jsx";
 import OrderDetails from "./component/Order/OrderDetails.jsx";
@@ -44,14 +41,8 @@ import About from "./component/layout/About/About.jsx";
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey", {
-      withCredentials: true,
-    });
-    setStripeApiKey(data.stripeApiKey);
-  }
+  
 
   useEffect(() => {
     Webfont.load({
@@ -61,7 +52,6 @@ function App() {
     });
     store.dispatch(loadUser());
 
-    getStripeApiKey();
   }, []);
   window.addEventListener("contextmenu", (e) => e.preventDefault());
   return (
@@ -131,19 +121,17 @@ function App() {
           }
         />
 
-        {stripeApiKey && (
+        
           <Route
             exact
             path="/process/payment"
             element={
-              <Elements stripe={loadStripe(stripeApiKey)}>
+              
                 <ProtectedRoute>
                   <Payment />
                 </ProtectedRoute>
-              </Elements>
             }
           />
-        )}
         <Route
           exact
           path="/success"
