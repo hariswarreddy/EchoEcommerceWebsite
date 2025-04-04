@@ -146,25 +146,9 @@ const PaymentContent = () => {
 
 
 const Payment = () => {
-  const [stripeApiKey, setStripeApiKey] = useState(null);
-  useEffect(() => {
-    async function getStripeApiKey() {
-      try {
-        const { data } = await axios.get("/api/v1/stripeapikey", {
-          withCredentials: true,
-        });
-        setStripeApiKey(data.stripeApiKey);
-      } catch (error) {
-        console.error("Failed to fetch Stripe API key:", error);
-      }
-    }
-    getStripeApiKey();
-  }, []);
-  if (!stripeApiKey) {
-    return <div>Loading Payment...</div>
-  }
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
   return (
-    <Elements stripe={loadStripe(stripeApiKey)}>
+    <Elements stripe={stripePromise}>
       <PaymentContent />
     </Elements>
   )
