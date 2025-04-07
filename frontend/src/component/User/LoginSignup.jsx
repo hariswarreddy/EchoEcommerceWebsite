@@ -37,6 +37,12 @@ const LoginSignup = () => {
 
   const registerSubmit = (e) => {
     e.preventDefault();
+    if (password.length < 8) {
+      toast.error("Password is lessthan 8 characters");
+    }
+    if (name.length < 3) {
+      toast.error("enter atleast 4 characters");
+    }
     const myForm = new FormData();
     myForm.set("name", name);
     myForm.set("email", email);
@@ -69,12 +75,7 @@ const LoginSignup = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
-    if (password.length < 8) {
-      toast.error("Password is lessthan 8 characters");
-    }
-    if (name.length < 3) {
-      toast.error("enter atleast 4 characters");
-    }
+    
 
     if (error) {
       toast.error(error);
