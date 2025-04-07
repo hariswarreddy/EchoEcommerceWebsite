@@ -29,7 +29,7 @@ const LoginSignup = () => {
 
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("/logo192.png");
+  const [avatarPreview, setAvatarPreview] = useState("./user.png");
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -69,6 +69,13 @@ const LoginSignup = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
+    if (password.length < 8) {
+      toast.error("Password is lessthan 8 characters");
+    }
+    if (name.length < 3) {
+      toast.error("enter atleast 4 characters");
+    }
+
     if (error) {
       toast.error(error);
 
@@ -76,6 +83,7 @@ const LoginSignup = () => {
     }
     if (isAuthenticated) {
       navigate(redirect);
+      toast.success("Logged in successfully");
     }
   }, [dispatch, error, navigate, isAuthenticated,redirect]);
 
