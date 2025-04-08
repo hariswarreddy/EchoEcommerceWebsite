@@ -23,7 +23,7 @@ dotenv.config();
 
 
 app.use(cors({
-  origin: "https://echo-ecommerce-store.vercel.app",
+  origin: "https://echoecommercestore.onrender.com",
   credentials: true
 }));
 
